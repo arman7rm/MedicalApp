@@ -9,7 +9,6 @@ namespace DataAccess.Models
     {
         public int BookingId { get; set; }
         public DateTime Date { get; set; }
-        public TimeSpan Time { get; set; }
         public int DoctorId { get; set; }
         public int PatientId { get; set; }
         public string Description { get; set; }

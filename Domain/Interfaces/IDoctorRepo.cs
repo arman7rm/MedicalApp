@@ -10,7 +10,6 @@ namespace Domain.Interfaces
         int Add(Doctor newDoctor);
         IEnumerable<Doctor> GetByCity(string City);
         IEnumerable<Doctor> GetByState(string State);
-        IEnumerable<Doctor> GetByType(string Type);
         void Update(Doctor newDoctor);
         void Delete(Doctor newDoctor);
         double GetRating(int DoctorId);
