@@ -11,5 +11,6 @@ namespace DataAccess.Models
         public int DoctorId { get; set; }
         public int UserId { get; set; }
         public string Review1 { get; set; }
+        public double Rating { get; set; }
     }
 }

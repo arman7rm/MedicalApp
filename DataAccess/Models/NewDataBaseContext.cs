@@ -20,7 +20,6 @@ namespace DataAccess.Models
         public virtual DbSet<Booking> Bookings { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<DoctorType> DoctorTypes { get; set; }
-        public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
@@ -98,13 +97,6 @@ namespace DataAccess.Models
                 entity.Property(e => e.DoctorType1)
                     .HasMaxLength(200)
                     .HasColumnName("DoctorType");
-            });
-
-            modelBuilder.Entity<Rating>(entity =>
-            {
-                entity.Property(e => e.Rating1).HasColumnName("Rating");
-
-                entity.Property(e => e.UserId).HasColumnName("userId");
             });
 
             modelBuilder.Entity<Review>(entity =>
