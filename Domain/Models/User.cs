@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Interfaces
+namespace Domain.Models
 {
-    interface IBookingRepo
+    class User
     {
-
     }
 }
