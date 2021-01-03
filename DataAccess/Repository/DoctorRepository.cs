@@ -9,7 +9,41 @@ using DataAccess.Models;
 
 namespace DataAccess.Repository
 {
-    class DoctorRepository
+    public class DoctorRepository : IDoctorRepo
     {
+        private readonly NewDataBaseContext _context;
+        public DoctorRepository(NewDataBaseContext context)
+        {
+            _context = context;
+        }
+        public int Add(d.Doctor newDoctor)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(d.Doctor newDoctor)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<d.Doctor> GetByCity(string City)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<d.Doctor> GetByState(string State)
+        {
+            throw new NotImplementedException();
+        }
+
+        public double GetRating(int DoctorId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(d.Doctor newDoctor)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
