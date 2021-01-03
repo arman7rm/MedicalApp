@@ -20,5 +20,6 @@ namespace Domain.Models
         public double Rating { get; set; }
         public string Phone { get; set; }
         public List<Booking> Appointments = new List<Booking>();
+
     }
 }

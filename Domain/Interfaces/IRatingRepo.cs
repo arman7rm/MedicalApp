@@ -5,10 +5,9 @@ using Domain.Models;
 
 namespace Domain.Interfaces
 {
-    public interface IDoctorTypeRepo
+    public interface IRatingRepo
     {
-        void Add(int Id, string type);
-        void DeleteDoctor(int Id);
-
+        int Add(Rating newRating);
+        double GetRating(int DoctorId);
     }
 }
