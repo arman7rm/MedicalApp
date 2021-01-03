@@ -17,7 +17,7 @@ namespace DataAccess.Models
         public string State { get; set; }
         public string Bio { get; set; }
         public int ExpYears { get; set; }
-        public int Fee { get; set; }
+        public double? Fee { get; set; }
         public string Phone { get; set; }
         public double? Rating { get; set; }
         public int? Consultations { get; set; }
