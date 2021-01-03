@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.Models
 {
-    class Booking
+    public class Booking
     {
         public int BookingId { get; set; }
         public int DoctorId { get; set; }
