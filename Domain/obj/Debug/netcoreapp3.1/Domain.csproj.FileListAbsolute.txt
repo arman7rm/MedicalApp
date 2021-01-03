@@ -1,0 +1,9 @@
+C:\MedicalApp\MedicalApp\Domain\bin\Debug\netcoreapp3.1\Domain.deps.json
+C:\MedicalApp\MedicalApp\Domain\bin\Debug\netcoreapp3.1\Domain.dll
+C:\MedicalApp\MedicalApp\Domain\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\MedicalApp\MedicalApp\Domain\obj\Debug\netcoreapp3.1\Domain.csprojAssemblyReference.cache
+C:\MedicalApp\MedicalApp\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfoInputs.cache
+C:\MedicalApp\MedicalApp\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfo.cs
+C:\MedicalApp\MedicalApp\Domain\obj\Debug\netcoreapp3.1\Domain.csproj.CoreCompileInputs.cache
+C:\MedicalApp\MedicalApp\Domain\obj\Debug\netcoreapp3.1\Domain.dll
+C:\MedicalApp\MedicalApp\Domain\obj\Debug\netcoreapp3.1\Domain.pdb

@@ -1,0 +1,15 @@
+C:\MedicalApp\MedicalApp\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.deps.json
+C:\MedicalApp\MedicalApp\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.dll
+C:\MedicalApp\MedicalApp\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csprojAssemblyReference.cache
+C:\MedicalApp\MedicalApp\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfoInputs.cache
+C:\MedicalApp\MedicalApp\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfo.cs
+C:\MedicalApp\MedicalApp\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.runtimeconfig.json
+C:\MedicalApp\MedicalApp\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.runtimeconfig.dev.json
+C:\MedicalApp\MedicalApp\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.genruntimeconfig.cache
+C:\MedicalApp\MedicalApp\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.pdb
+C:\MedicalApp\MedicalApp\DataAccess\bin\Debug\netcoreapp3.1\Domain.dll
+C:\MedicalApp\MedicalApp\DataAccess\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\MedicalApp\MedicalApp\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.CoreCompileInputs.cache
+C:\MedicalApp\MedicalApp\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.CopyComplete
+C:\MedicalApp\MedicalApp\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.dll
+C:\MedicalApp\MedicalApp\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.pdb
