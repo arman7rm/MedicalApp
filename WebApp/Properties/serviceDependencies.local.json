@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroup')]/providers/Microsoft.Sql/servers/salam2020/databases/NewDataBase",
+      "type": "mssql.azure",
+      "connectionId": "SqlServer",
+      "secretStore": "LocalSecretsFile"
+    }
+  }
+}
