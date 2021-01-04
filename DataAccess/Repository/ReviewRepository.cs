@@ -18,22 +18,52 @@ namespace DataAccess.Repository
         }
         public int Add(d.Review newReview)
         {
-            throw new NotImplementedException();
+            var entity = new Review
+            {
+                DoctorId = newReview.DoctorId,
+                UserId = newReview.UserId,
+                Rating = newReview.Rating,
+                Review1 = newReview.Content
+            };
+            _context.Reviews.Add(entity);
+            _context.SaveChanges();
+            return entity.ReviewId;
         }
 
         public void Delete(int Id)
         {
-            throw new NotImplementedException();
+            var entity = _context.Reviews.Find(Id);
+            if(entity == null)
+            {
+                throw new ArgumentNullException();
+            }
+            _context.Reviews.Remove(entity);
+            _context.SaveChanges();
         }
 
         public IEnumerable<d.Review> GetReviews(int DoctorId)
         {
-            throw new NotImplementedException();
+            var entities = _context.Reviews
+                .Where(r => r.DoctorId==DoctorId);
+            return entities.Select(m => new d.Review
+            {
+                ReviewId = m.ReviewId,
+                Rating = m.Rating,
+                Content = m.Review1,
+                DoctorId = m.DoctorId,
+                UserId = m.UserId
+            });
         }
 
         public void Update(d.Review newReview)
         {
-            throw new NotImplementedException();
+            var entity = _context.Reviews.Find(newReview.ReviewId);
+            entity.DoctorId = newReview.DoctorId;
+            entity.UserId = newReview.UserId;
+            entity.Rating = newReview.Rating;
+            entity.Review1 = newReview.Content;
+            _context.Reviews.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

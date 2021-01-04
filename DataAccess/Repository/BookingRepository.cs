@@ -80,6 +80,7 @@ namespace DataAccess.Repository
             entity.Date = DateTime.Now;
             entity.DoctorId = newBooking.DoctorId;
             entity.PatientId = newBooking.UserId;
+            _context.Bookings.Update(entity);
             _context.SaveChanges();
         }
     }

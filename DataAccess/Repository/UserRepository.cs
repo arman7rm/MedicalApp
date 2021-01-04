@@ -18,22 +18,63 @@ namespace DataAccess.Repository
         }
         public int Add(d.User newUser)
         {
-            throw new NotImplementedException();
+            var entity = new User
+            {
+                Username = newUser.UserName,
+                Pass = newUser.PassWord,
+                FirstName = newUser.FirstName,
+                LastName = newUser.LastName,
+                Email = newUser.Email,
+                City = newUser.City.ToLower(),
+                State = newUser.State,
+                Phone = newUser.Phone
+            };
+            _context.Users.Add(entity);
+            _context.SaveChanges();
+            return entity.UserId;
         }
 
         public void Delete(int Id)
         {
-            throw new NotImplementedException();
+            var entity = _context.Users.Find(Id);
+            if (entity == null)
+            {
+                throw new ArgumentNullException();
+            }
+            _context.Users.Remove(entity);
+            _context.SaveChanges();
         }
 
         public d.User Get(int Id)
         {
-            throw new NotImplementedException();
+            var entity = _context.Users.Find(Id);
+            return new d.User
+            {
+                UserId = entity.UserId,
+                PassWord = entity.Pass,
+                FirstName = entity.FirstName,
+                LastName = entity.LastName, 
+                Email = entity.Email,
+                City = entity.City,
+                State = entity.State,
+                Phone = entity.Phone
+            };
         }
 
         public int Update(d.User newUser)
         {
-            throw new NotImplementedException();
+            var entity = _context.Users.Find(newUser.UserId);
+            entity.FirstName = newUser.FirstName;
+            entity.LastName = newUser.LastName;
+            entity.Username = newUser.UserName;
+            entity.Pass = newUser.PassWord;
+            entity.City = newUser.City;
+            entity.State = newUser.State;
+            entity.Phone = newUser.Phone;
+            entity.Email = newUser.Email;
+            _context.Users.Update(entity);
+            _context.SaveChanges();
+            return entity.UserId;
         }
     }
 }
