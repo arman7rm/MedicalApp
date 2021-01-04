@@ -18,17 +18,42 @@ namespace DataAccess.Repository
         }
         public void Add(int Id, string type)
         {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteDoctor(int Id)
-        {
-            throw new NotImplementedException();
+            var entity = new DoctorType
+            {
+                DoctorId = Id,
+                DoctorType1 = type.ToLower()
+            };
+            _context.DoctorTypes.Add(entity);
+            _context.SaveChanges();
         }
 
         public IEnumerable<d.Doctor> GetByType(string type)
         {
-            throw new NotImplementedException();
+            var doctorsIds = _context.DoctorTypes
+                .Where(d => d.DoctorType1 == type.ToLower());
+            List<d.Doctor> result = new List<d.Doctor>();
+            foreach(var doc in doctorsIds)
+            {
+                var entity = _context.Doctors.Find(doc.DoctorId);
+                d.Doctor temp = new d.Doctor
+                {
+                    DoctorId = entity.DoctorId,
+                    UserName = entity.Username,
+                    PassWord = entity.Pass,
+                    FirstName = entity.FirstName,
+                    LastName = entity.LastName,
+                    Email = entity.Email,
+                    City = entity.City,
+                    State = entity.State,
+                    Phone = entity.Phone,
+                    Bio = entity.Bio,
+                    Exp = entity.ExpYears,
+                    Fee = (double)entity.Fee,
+                    Rating = (double)entity.Rating
+                };
+                result.Add(temp);
+            }
+            return result;
         }
     }
 }

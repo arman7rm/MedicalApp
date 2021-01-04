@@ -35,6 +35,17 @@ namespace DataAccess.Repository
                 Consultations = 0,
             };
             _context.Doctors.Add(entity);
+            var types = newDoctor.Types;
+            foreach(string x in types)
+            {
+                var temp = new DoctorType
+                {
+                    DoctorId = newDoctor.DoctorId,
+                    DoctorType1 = x
+                };
+                _context.DoctorTypes.Add(temp);
+                _context.SaveChanges();
+            }
             _context.SaveChanges();
             return entity.DoctorId;
         }
@@ -47,6 +58,13 @@ namespace DataAccess.Repository
                 throw new ArgumentNullException();
             }
             _context.Doctors.Remove(entity);
+            var types = _context.DoctorTypes
+                .Where(t => t.DoctorId == newDoctor.DoctorId);
+            foreach(var type in types)
+            {
+                _context.DoctorTypes.Remove(type);
+                _context.SaveChanges();
+            }
             _context.SaveChanges();
         }
 
