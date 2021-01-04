@@ -68,6 +68,23 @@ namespace DataAccess.Repository
                 UserId = e.PatientId
             });
         }
+        public d.Booking GetById(int BookingId)
+        {
+            var entity = _context.Bookings.Find(BookingId);
+            if (entity == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return new d.Booking
+            {
+                BookingId = entity.BookingId,
+                Date = entity.Date,
+                UserId = entity.PatientId,
+                DoctorId = entity.DoctorId,
+                Description = entity.Description
+            };
+        }
 
         public void Update(d.Booking newBooking)
         {
