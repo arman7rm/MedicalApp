@@ -8,6 +8,7 @@ namespace DataAccess.Models
     public partial class DoctorType
     {
         public int DoctorId { get; set; }
+        public int DoctorTypeId { get; set; }
         public string DoctorType1 { get; set; }
     }
 }

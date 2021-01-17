@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "zJB0bw78HLtYLCF8okWvanvZYQtGVOSvNSsXz2yzbLRYDjdcJjdsTQD/BlXqZQLvCSanKWAI+Agbl63tXHo1bg==",
+  "dgSpecHash": "lzCLWoXVlfHglJbO0hQmy72/fqyCh9RSBpseAiBCxdF3TEhd3RzoJOWrEWlZH8wzR0LQafOnXx6CMFKQVTnJXA==",
   "success": true,
   "projectFilePath": "C:\\MedicalApp\\MedicalApp\\Domain\\Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\12012\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\12012\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\12012\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }

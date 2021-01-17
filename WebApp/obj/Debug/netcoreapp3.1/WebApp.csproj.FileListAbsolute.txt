@@ -169,3 +169,4 @@ C:\MedicalApp\MedicalApp\WebApp\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAn
 C:\MedicalApp\MedicalApp\WebApp\obj\Debug\netcoreapp3.1\WebApp.dll
 C:\MedicalApp\MedicalApp\WebApp\obj\Debug\netcoreapp3.1\WebApp.pdb
 C:\MedicalApp\MedicalApp\WebApp\obj\Debug\netcoreapp3.1\WebApp.genruntimeconfig.cache
+C:\MedicalApp\MedicalApp\WebApp\bin\Debug\netcoreapp3.1\AutoMapper.dll

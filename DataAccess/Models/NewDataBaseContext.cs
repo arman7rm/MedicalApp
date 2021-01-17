@@ -17,6 +17,7 @@ namespace DataAccess.Models
         {
         }
 
+        public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<Booking> Bookings { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<DoctorType> DoctorTypes { get; set; }
@@ -38,7 +39,7 @@ namespace DataAccess.Models
 
             modelBuilder.Entity<Booking>(entity =>
             {
-                entity.Property(e => e.BookingId).HasColumnName("BookingID");
+                entity.HasKey(e => e.BookingId);
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
@@ -47,7 +48,7 @@ namespace DataAccess.Models
 
             modelBuilder.Entity<Doctor>(entity =>
             {
-                entity.Property(e => e.DoctorId).HasColumnName("DoctorID");
+                entity.HasKey(e => e.DoctorId);
 
                 entity.Property(e => e.Bio)
                     .IsRequired()
@@ -84,11 +85,14 @@ namespace DataAccess.Models
                     .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("username");
+
+                entity.HasMany(e => e.doctorTypes);
+                entity.HasMany(e => e.appointments);
             });
 
             modelBuilder.Entity<DoctorType>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.DoctorId);
 
                 entity.ToTable("DoctorType");
 
@@ -98,9 +102,21 @@ namespace DataAccess.Models
                     .HasMaxLength(200)
                     .HasColumnName("DoctorType");
             });
+            modelBuilder.Entity<Tag>(entity =>
+            {
+
+                entity.ToTable("Tag");
+
+                entity.HasKey(e => e.tagId);
+
+                entity.Property(e => e.term).HasColumnName("Term");
+
+                entity.HasMany(e => e.DoctorTypes);
+            });
 
             modelBuilder.Entity<Review>(entity =>
             {
+                entity.HasKey(e => e.ReviewId);
                 entity.Property(e => e.Review1)
                     .IsRequired()
                     .HasMaxLength(255)
@@ -111,7 +127,7 @@ namespace DataAccess.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.Property(e => e.UserId).HasColumnName("UserID");
+                entity.HasKey(e => e.UserId);
 
                 entity.Property(e => e.City)
                     .IsRequired()

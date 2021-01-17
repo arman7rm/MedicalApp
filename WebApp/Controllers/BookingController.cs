@@ -31,14 +31,8 @@ namespace WebApp.Controllers
         [HttpPost("create")]
         public IActionResult CreateBooking([FromBody] Booking booking)
         {
-            Booking newBooking = new Booking
-            {
-                DoctorId = booking.DoctorId,
-                Date = booking.Date,
-                UserId = booking.UserId,
-                Description = booking.Description
-            };
-            int BookingId = _bookingRepo.Add(newBooking);
+        
+            int BookingId = _bookingRepo.Add(booking);
             var result = _bookingRepo.GetById(BookingId);
 
             return CreatedAtAction(nameof(getById), new { id = BookingId}, result);

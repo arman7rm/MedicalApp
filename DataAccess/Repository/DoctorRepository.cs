@@ -16,6 +16,26 @@ namespace DataAccess.Repository
         {
             _context = context;
         }
+
+        public d.Doctor Get(int id)
+        {
+            var entity = _context.Doctors.Find(id);
+            return new d.Doctor
+            {
+                UserName = entity.Username,
+                FirstName = entity.FirstName,
+                LastName = entity.LastName,
+                Bio = entity.Bio,
+                City = entity.City,
+                State = entity.State,
+                DoctorId = entity.DoctorId,
+                Email = entity.Email,
+                Exp = entity.ExpYears,
+                Fee = entity.Fee,
+                Phone = entity.Phone,
+                Rating = entity.Rating
+            };
+        }
         public int Add(d.Doctor newDoctor)
         {
             var entity = new Doctor

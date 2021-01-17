@@ -21,5 +21,7 @@ namespace DataAccess.Models
         public string Phone { get; set; }
         public double? Rating { get; set; }
         public int? Consultations { get; set; }
+        public ICollection<DoctorType> doctorTypes { get; set; }
+        public ICollection<Booking> appointments { get; set; }
     }
 }
