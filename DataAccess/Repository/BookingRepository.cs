@@ -68,7 +68,7 @@ namespace DataAccess.Repository
                 UserId = e.PatientId
             });
         }
-        public d.Booking? GetById(int BookingId)
+        public d.Booking GetById(int BookingId)
         {
             var entity = _context.Bookings.Find(BookingId);
             if (entity == null)

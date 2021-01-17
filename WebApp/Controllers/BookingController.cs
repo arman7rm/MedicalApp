@@ -44,12 +44,31 @@ namespace WebApp.Controllers
             return CreatedAtAction(nameof(getById), new { id = BookingId}, result);
         }
 
-        [HttpGet("Get_By_Doctor/{id}")]
+        [HttpGet("doctor/{id}")]
         public IActionResult GetByDoctor(int id)
         {
             return Ok(_bookingRepo.GetByDoctor(id));
         }
 
+        [HttpGet("user/{id}")]
+        public IActionResult GetByUser(int id)
+        {
+            return Ok(_bookingRepo.GetByUser(id));
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _bookingRepo.Delete(id);
+            return Ok();
+        }
+
+        [HttpPut()]
+        public IActionResult Update([FromBody] Booking booking)
+        {
+            _bookingRepo.Update(booking);
+            return Ok();
+        }
 
     }
 }
