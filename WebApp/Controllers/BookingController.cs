@@ -43,5 +43,13 @@ namespace WebApp.Controllers
 
             return CreatedAtAction(nameof(getById), new { id = BookingId}, result);
         }
+
+        [HttpGet("Get_By_Doctor/{id}")]
+        public IActionResult GetByDoctor(int id)
+        {
+            return Ok(_bookingRepo.GetByDoctor(id));
+        }
+
+
     }
 }
