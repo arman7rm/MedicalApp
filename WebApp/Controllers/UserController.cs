@@ -39,11 +39,12 @@ namespace WebApp.Controllers
             return Created($"api/<UserController>/{newUserID}", newUser);
         }
 
-        // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] User user)
+        // PUT api/<UserController>
+        [HttpPut()]
+        public IActionResult Put([FromBody] User user)
         {
-
+            _userRepo.Update(user);
+            return Ok();
         }
 
         // DELETE api/<UserController>/5

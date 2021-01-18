@@ -51,6 +51,7 @@ namespace DataAccess.Repository
             return new d.User
             {
                 UserId = entity.UserId,
+                UserName = entity.Username,
                 PassWord = entity.Pass,
                 FirstName = entity.FirstName,
                 LastName = entity.LastName, 
