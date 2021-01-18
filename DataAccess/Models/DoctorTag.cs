@@ -4,9 +4,10 @@ using System.Text;
 
 namespace DataAccess.Models
 {
-    public partial class Tag
+    public partial class DoctorTag
     {
+        public int doctorTagId { get; set; }
+        public int doctorId { get; set; }
         public int tagId { get; set; }
-        public string term { get; set; }
     }
 }

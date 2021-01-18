@@ -53,19 +53,23 @@ namespace DataAccess.Repository
                 Phone = newDoctor.Phone,
                 Rating = 0,
                 Consultations = 0,
+                DoctorType = newDoctor.DoctorType
             };
             _context.Doctors.Add(entity);
-            var types = newDoctor.Types;
-            foreach(string x in types)
-            {
-                var temp = new DoctorType
-                {
-                    DoctorId = newDoctor.DoctorId,
-                    DoctorType1 = x
-                };
-                _context.DoctorTypes.Add(temp);
-                _context.SaveChanges();
-            }
+            _context.SaveChanges();
+            var doc = _context.Doctors.First(d => d.Username==entity.Username);
+            var cityTag = _context.Tags.First(t => t.term == doc.City.ToLower());
+            var city = new DoctorTag { doctorId = doc.DoctorId, tagId = cityTag.tagId };
+            var stateTag = _context.Tags.First(t => t.term == doc.State.ToLower());
+            var state = new DoctorTag { doctorId = doc.DoctorId, tagId = stateTag.tagId };
+            var typeTag = _context.Tags.First(t => t.term == doc.DoctorType.ToLower());
+            var type = new DoctorTag { doctorId = doc.DoctorId, tagId = typeTag.tagId };
+
+            _context.DoctorTags.Add(city);
+            _context.SaveChanges();
+            _context.DoctorTags.Add(type);
+            _context.SaveChanges();
+            _context.DoctorTags.Add(state);
             _context.SaveChanges();
             return entity.DoctorId;
         }
@@ -78,59 +82,46 @@ namespace DataAccess.Repository
                 throw new ArgumentNullException();
             }
             _context.Doctors.Remove(entity);
-            var types = _context.DoctorTypes
-                .Where(t => t.DoctorId == id);
+            var types = _context.DoctorTags
+                .Where(t => t.doctorId == id);
             foreach (var type in types)
             {
-                _context.DoctorTypes.Remove(type);
+                _context.DoctorTags.Remove(type);
                 _context.SaveChanges();
             }
             _context.SaveChanges();
         }
 
-        public IEnumerable<d.Doctor> GetByCity(string City)
+        public IEnumerable<d.Doctor> Search(string tag)
         {
-            var doctors = _context.Doctors
-                .Where(d => d.City == City.ToLower());
-            return doctors.Select(e => new d.Doctor
+            var query = _context.Tags.First(t => t.term == tag.ToLower());
+            var docTags = _context.DoctorTags
+                .Where(d => d.tagId == query.tagId);
+            var doctors = new List<d.Doctor>();
+            foreach(DoctorTag x in docTags)
             {
-                DoctorId = e.DoctorId,
-                UserName = e.Username,
-                PassWord = e.Pass,
-                FirstName = e.FirstName,
-                LastName = e.LastName,
-                Email = e.Email,
-                City = e.City,
-                State = e.State,
-                Bio = e.Bio,
-                Exp = e.ExpYears,
-                Fee = (double)e.Fee,
-                Rating = (double)e.Rating,
-                Phone = e.Phone
-            });
+                Doctor entity = _context.Doctors.Find(x.doctorId);
+                d.Doctor doc = new d.Doctor
+                {
+                    UserName = entity.Username,
+                    FirstName = entity.FirstName,
+                    LastName = entity.LastName,
+                    Bio = entity.Bio,
+                    City = entity.City,
+                    DoctorId = entity.DoctorId,
+                    Email = entity.Email,
+                    DoctorType = entity.DoctorType,
+                    Exp = entity.ExpYears,
+                    Fee = entity.Fee,
+                    Phone = entity.Phone,
+                    Rating = entity.Rating,
+                    State = entity.State
+                };
+                doctors.Add(doc);
+            }
+            return doctors;
         }
 
-        public IEnumerable<d.Doctor> GetByState(string State)
-        {
-            var doctors = _context.Doctors
-                .Where(d => d.State == State.ToLower());
-            return doctors.Select(e => new d.Doctor
-            {
-                DoctorId = e.DoctorId,
-                UserName = e.Username,
-                PassWord = e.Pass,
-                FirstName = e.FirstName,
-                LastName = e.LastName,
-                Email = e.Email,
-                City = e.City,
-                State = e.State,
-                Bio = e.Bio,
-                Exp = e.ExpYears,
-                Fee = (double)e.Fee,
-                Rating = (double)e.Rating,
-                Phone = e.Phone
-            });
-        }
 
         public double GetRating(int DoctorId)
         {

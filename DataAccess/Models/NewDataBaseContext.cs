@@ -20,7 +20,7 @@ namespace DataAccess.Models
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<Booking> Bookings { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
-        public virtual DbSet<DoctorType> DoctorTypes { get; set; }
+        public virtual DbSet<DoctorTag> DoctorTags { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
@@ -85,22 +85,22 @@ namespace DataAccess.Models
                     .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("username");
+                entity.Property(e => e.DoctorType)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("DoctorType");
 
-                entity.HasMany(e => e.doctorTypes);
+                entity.HasMany(e => e.doctorTags);
                 entity.HasMany(e => e.appointments);
             });
 
-            modelBuilder.Entity<DoctorType>(entity =>
+            modelBuilder.Entity<DoctorTag>(entity =>
             {
-                entity.HasKey(e => e.DoctorId);
+                entity.ToTable("DoctorTags");
+                entity.HasKey(e => e.doctorTagId);
+                entity.Property(e => e.doctorId).HasColumnName("DoctorID");
+                entity.Property(e => e.tagId).HasColumnName("tagId");
 
-                entity.ToTable("DoctorType");
-
-                entity.Property(e => e.DoctorId).HasColumnName("DoctorID");
-
-                entity.Property(e => e.DoctorType1)
-                    .HasMaxLength(200)
-                    .HasColumnName("DoctorType");
             });
             modelBuilder.Entity<Tag>(entity =>
             {
@@ -111,7 +111,6 @@ namespace DataAccess.Models
 
                 entity.Property(e => e.term).HasColumnName("Term");
 
-                entity.HasMany(e => e.DoctorTypes);
             });
 
             modelBuilder.Entity<Review>(entity =>
