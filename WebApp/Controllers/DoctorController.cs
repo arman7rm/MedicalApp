@@ -31,20 +31,27 @@ namespace WebApp.Controllers
 
         // POST api/<DoctorController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] Doctor doc)
         {
+            var newDocID = _doctorRepo.Add(doc);
+            var newDoc = _doctorRepo.Get(newDocID);
+            return Created($"api/<DoctorContoller>/{newDocID}", newDoc);
         }
 
         // PUT api/<DoctorController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Update([FromBody] Doctor Doc)
         {
+            _doctorRepo.Update(Doc);
+            return Ok();
         }
 
         // DELETE api/<DoctorController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            _doctorRepo.Delete(id);
+            return Ok();
         }
     }
 }

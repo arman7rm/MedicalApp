@@ -49,8 +49,10 @@ namespace WebApp.Controllers
 
         // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            _userRepo.Delete(id);
+            return Ok();
         }
     }
 }

@@ -70,17 +70,17 @@ namespace DataAccess.Repository
             return entity.DoctorId;
         }
 
-        public void Delete(d.Doctor newDoctor)
+        public void Delete(int id)
         {
-            var entity = _context.Doctors.Find(newDoctor.DoctorId);
+            var entity = _context.Doctors.Find(id);
             if (entity == null)
             {
                 throw new ArgumentNullException();
             }
             _context.Doctors.Remove(entity);
             var types = _context.DoctorTypes
-                .Where(t => t.DoctorId == newDoctor.DoctorId);
-            foreach(var type in types)
+                .Where(t => t.DoctorId == id);
+            foreach (var type in types)
             {
                 _context.DoctorTypes.Remove(type);
                 _context.SaveChanges();
