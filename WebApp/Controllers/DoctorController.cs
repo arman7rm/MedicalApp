@@ -29,6 +29,14 @@ namespace WebApp.Controllers
             return Ok(result);
         }
 
+        // GET api/<DoctorController>/5
+        [HttpGet("search/{query}")]
+        public IActionResult Search(string query)
+        {
+            var result = _doctorRepo.Search(query);
+            return Ok(result);
+        }
+
         // POST api/<DoctorController>
         [HttpPost]
         public IActionResult Post([FromBody] Doctor doc)

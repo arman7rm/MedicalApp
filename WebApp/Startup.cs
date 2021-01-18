@@ -49,7 +49,7 @@ namespace WebApp
             services.AddScoped<IUserRepo, UserRepository>();
             services.AddScoped<IReviewRepo, ReviewRepository>();
             services.AddScoped<IDoctorRepo, DoctorRepository>();
-            services.AddScoped<IDoctorTypeRepo, DoctorTypeRepository>();
+            services.AddScoped<ITagRepo, TagRepository>();
             services.AddScoped<IBookingRepo, BookingRepository>();
 
             // Register the Swagger generator, defining 1 or more Swagger documents

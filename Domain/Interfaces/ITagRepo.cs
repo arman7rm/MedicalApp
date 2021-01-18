@@ -5,10 +5,10 @@ using Domain.Models;
 
 namespace Domain.Interfaces
 {
-    public interface IDoctorTypeRepo
+    public interface ITagRepo
     {
-        void Add(int Id, string type);
-        IEnumerable<Doctor> GetByType(string type);
+        void Add(string term);
+        void Delete(string term);
 
     }
 }

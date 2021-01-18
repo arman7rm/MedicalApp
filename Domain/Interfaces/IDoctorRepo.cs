@@ -9,10 +9,9 @@ namespace Domain.Interfaces
     {
         int Add(Doctor newDoctor);
         Doctor Get(int id);
-        IEnumerable<Doctor> GetByCity(string City);
-        IEnumerable<Doctor> GetByState(string State);
+        IEnumerable<Doctor> Search(string tag);
         void Update(Doctor newDoctor);
-        void Delete(Doctor newDoctor);
+        void Delete(int newDoctor);
         double GetRating(int DoctorId);
 
     }
